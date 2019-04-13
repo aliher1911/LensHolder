@@ -1,6 +1,5 @@
 lens_diameter = 75;
 lens_radius = lens_diameter / 2.0;
-led_diameter = 5;
 lens_thickness = 4.25;
 lens_overhang = 2;
 axle_diameter = 3.9;
@@ -8,16 +7,18 @@ axle_nut_height = 2.8;
 axle_nut_diameter = 7;
 axle_holder_length = 12;
 ring_wall = 3;
-ring_width = ring_wall + led_diameter + 4;
 lens_overhang_thickness = 2;
+led_diameter = 5;
 led_count = 10;
 led_angle = 360 / led_count;
 led_offset_angle = led_angle / 2;
 led_height = 5;
 led_flange = 1.5; // thickness
-led_retain_offset = 3;
+led_flange_diameter = 7;
+led_retain_offset = 3.5;
 bottom_height = 9;
 top_height = 2;
+ring_width = ring_wall + led_diameter + 4;
 
 bolt_diameter = 2; // 1.83;
 bolt_head_diameter = 3.5; // 3.34;

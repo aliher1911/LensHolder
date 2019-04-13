@@ -16,13 +16,18 @@ module bottom(color=undef) {
 				// LED holes
 				for(angle = [0:led_angle:359]) {
 					rotate([0, 0, angle + led_offset_angle])
-						translate([-lens_radius-ring_width/2 - 2, 0, 0])
-							cylinder(100, d=led_diameter, center = true, $fn=50);
+						translate([-lens_radius - ring_wall, 0, 0])
+							rotate([0, -45, 0])
+								union() {
+									cylinder(100, d=led_diameter, center = true, $fn=50);
+									translate([0, 0, 25 + led_height]) cylinder(50, d=led_flange_diameter, center = true, $fn=50);
+								}
 				}
 			}
 			// part to hold an axle
 			translate([lens_radius + ring_wall + axle_holder_length/2, 0, axle_z_offset/2])
 				cube([axle_holder_length, axle_diameter * 4, axle_z_offset], center=true);
+
 		}
 		// hole for axle
 		translate([lens_radius + ring_wall, 0, axle_z_offset]) rotate([0, 90, 0])

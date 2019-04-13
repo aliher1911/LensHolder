@@ -3,7 +3,7 @@ use <Bottom.scad>
 //use <Dimensions.scad>
 
 
-translate([0, 0, 6]) rotate([0, 0, 0])
+translate([0, 0, 7]) rotate([0, 0, 0])
 	top(color="red");
 
 bottom();
