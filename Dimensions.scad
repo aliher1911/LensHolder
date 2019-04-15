@@ -54,6 +54,7 @@ module bolt($fn=$fn) {
 module bolt_side_hole() {
 	translate([0, 0, -bolt_head_thickness]) union() {
 		cylinder(100, d=bolt_head_diameter, $fn=50);
+		translate([0, 0, -1]) cylinder(1, r2=bolt_head_diameter/2, r1=bolt_diameter/2, $fn=50);
 		rotate([180, 0, 0]) translate([0, 0, -1]) cylinder(101, d=bolt_diameter, $fn=50);
 	}
 }
@@ -61,6 +62,7 @@ module bolt_side_hole() {
 module nut_side_hole() {
 	translate([0, 0, -nut_thickness]) union() {
 		cylinder(100, d=nut_diameter, $fn=6);
+		translate([0, 0, -1]) cylinder(1, r2=nut_diameter/2 * 0.865, r1=bolt_diameter/2, $fn=50);
 		rotate([180, 0, 0]) translate([0, 0, -1]) cylinder(101, d=bolt_diameter, $fn=50);
 	}
 }

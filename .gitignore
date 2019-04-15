@@ -1,2 +1,4 @@
 *.gcode
 *.stl
+test.scad
+.DS_store
