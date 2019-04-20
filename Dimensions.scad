@@ -18,6 +18,8 @@ led_flange_diameter = 7;
 led_retain_offset = 3.5;
 bottom_height = 9;
 top_height = 2;
+outer_wall = 2;
+slot_count = 30;
 ring_width = ring_wall + led_diameter + 4;
 
 bolt_diameter = 2; // 1.83;

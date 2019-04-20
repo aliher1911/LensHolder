@@ -4,7 +4,8 @@ module top(color=undef) {
     top_full_height = top_height + insert_depth;
     top_holder_height = top_height + bottom_height - axle_z_offset;
     bolt_block_len = bolt_diameter * 3;
-    led_support_height = bottom_height - led_height - led_flange;
+    // this is hacky adjustment for angled leds
+    led_support_height = bottom_height - led_height - led_flange + 0.5;
     color(color) difference() {
         union() { 
             // main cylinder with flange
@@ -26,6 +27,29 @@ module top(color=undef) {
                 rotate([0, 0, angle + led_offset_angle])
                     translate([-(lens_radius + ring_wall + led_retain_offset/2), 0, -led_support_height/2  + top_full_height - top_height])
                         cube([led_retain_offset, led_diameter, led_support_height], center=true);
+            }
+            // outer wall with holes
+            difference() {
+                translate([0, 0, -full_height + top_full_height])
+                    ring(full_height,
+                         r1=lens_radius + ring_width + outer_wall,
+                         r2=lens_radius + ring_width, 
+                         $fn=180);
+                // hole for axle holder
+                translate([lens_radius + ring_wall + axle_holder_length/2, 0, -50])
+                    cube([axle_holder_length, axle_diameter * 4, 100], center=true);
+/*                    
+                // slots
+                for(angle = [0:led_angle:359]) {
+                    rotate([0, 0, angle + led_offset_angle])
+                        union() {
+                            translate([lens_radius + ring_width + outer_wall, 0, -led_support_height/2  + top_full_height - top_height - 2])
+                                rotate([0, 45, 0]) cube([outer_wall * 5, 20, 1], center=true);
+                            translate([lens_radius + ring_width + outer_wall, 0, -led_support_height/2  + top_full_height - top_height - 5])
+                                rotate([0, 45, 0]) cube([outer_wall * 5, 20, 1], center=true);
+                        }
+                }
+*/
             }
 
         }
